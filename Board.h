@@ -28,6 +28,8 @@ class Board{
     void create(int size);
     void del();
     void init();
+    void Initialize(int size);
+
     int size() const;
     string draw(int pixel);
 
@@ -43,8 +45,6 @@ class Board{
     friend bool operator!= (Board const& x, Board const& y);
     
 };
-    
-
 
 inline ostream&  operator<<(ostream& out,const Board& board){
     for(int i = 0; i < board.size(); i++){
