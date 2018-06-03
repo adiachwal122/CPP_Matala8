@@ -1,7 +1,8 @@
 #include "Board.h"
 
 Board :: Board(){
-    
+    boardSize = 2;
+    Initialize(2);
 }
 
 Board :: Board(Board& other){//copy c'tor
@@ -56,6 +57,16 @@ void Board :: init(){ //to initial board
             this->mat[i][j] = '.';
         }
     }
+}
+
+void Board::Initialize(int size) {
+    boardSize = size;
+
+    //Create 2D array of cells
+    mat = new Character*[boardSize];
+    for(int i = 0; i < boardSize; i++)
+        mat[i] = new Character[boardSize];
+
 }
 
 int Board :: size() const{
@@ -148,7 +159,6 @@ bool operator!= (Board const& board1, Board const& board2){
 }
 
 string Board::draw(int pixel) {
-
     int picNum=1;
     string fileName = "boardPic"+to_string(picNum)+".ppm";
 
@@ -249,14 +259,7 @@ string Board::draw(int pixel) {
 }
 
 istream& operator>>(istream& in, Board& board){
- /*   cout << "enter board size: ";
-    in >> board.boardSize;
-    
-    board.create(board.size());
-    for(int i=0; i<board.size(); i++){
-        
-    }*/
-    
+
     int counter=0,tempSize=0;
     char c;
     bool flag = true;
